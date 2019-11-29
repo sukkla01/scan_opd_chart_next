@@ -1,0 +1,21 @@
+.list-pages{
+    cursor: pointer;
+    margin-top: 100px;
+  }
+  
+  .card-center {
+   
+    margin-top: 15%;
+   
+  }
+
+  .ant-card-head-title{
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .dropdown-menu {
+   
+    left: -100px;
+    
+}
