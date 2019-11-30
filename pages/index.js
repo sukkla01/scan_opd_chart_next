@@ -58,11 +58,11 @@ export default class index extends Component {
     
   }
   getPatient = async () => {
-    // console.log(this.state.hn + 'dd')
-    console.log(this.state.hn.length)
+  
     if(this.state.hn.length > 4){
       try {
         const res = await axios.get(`${BASE_URL}/find-hn/${this.state.hn}`)
+
   
         console.log(res)
         this.setState({
@@ -94,12 +94,16 @@ dataSource:[]
     // this.getPdf(value)
   }
   onSearch = searchText => {
-
+console.log(searchText)
 
     this.setState({
       hn: searchText,
   
     })
+
+    if(searchText.length>4){
+        // this.getPatient()
+    }
   };
 
   onDocumentLoad = ({ numPages }) => {
@@ -214,7 +218,7 @@ logAdd = async (status,hn)=>{
 
   render() {
     const { dataSource,pageNumber, numPages,isShow,isLoadFileError,data_null } = this.state
-    const hn_null =   this.state.hn > 4  ? data_null.map(item => <Option key="1">ไม่พบข้อมูล</Option>)  :   data_null.map(item => <Option key="1">กรุณากรอกให้มากว่า 4 หลัก</Option>)
+    const hn_null =   this.state.hn > 4  ? data_null.map(item => <Option key="1"></Option>)  :   data_null.map(item => <Option key="1">กรุณากรอกให้มากว่า 4 หลัก</Option>)
     const children =  dataSource.length>0 ? dataSource.map(item => <Option key={item.hn}>{item.tname}</Option>) : hn_null
 
     const listPdfCard = this.state.arr.map((item, i) => {
