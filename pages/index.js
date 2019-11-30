@@ -62,7 +62,7 @@ export default class index extends Component {
     console.log(this.state.hn.length)
     if(this.state.hn.length > 4){
       try {
-        const res = await axios.get(`http://localhost:4000/find-hn/${this.state.hn}`)
+        const res = await axios.get(`${BASE_URL}/find-hn/${this.state.hn}`)
   
         console.log(res)
         this.setState({
