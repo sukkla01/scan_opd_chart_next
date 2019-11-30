@@ -84,7 +84,10 @@ export default class index extends Component {
       hn_select: value,
 isShow:true,
 isLoadFileError:true,
-dataSource:[]
+dataSource:[],
+arr:[],
+arr_page:[],
+pageNumber:1
     })
 
     this.logAdd('view',value)
