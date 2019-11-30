@@ -58,11 +58,11 @@ export default class index extends Component {
     
   }
   getPatient = async () => {
-  
+    // console.log(this.state.hn + 'dd')
+    console.log(this.state.hn.length)
     if(this.state.hn.length > 4){
       try {
         const res = await axios.get(`${BASE_URL}/find-hn/${this.state.hn}`)
-
   
         console.log(res)
         this.setState({
@@ -94,16 +94,12 @@ dataSource:[]
     // this.getPdf(value)
   }
   onSearch = searchText => {
-console.log(searchText)
+
 
     this.setState({
       hn: searchText,
   
     })
-
-    if(searchText.length>4){
-        // this.getPatient()
-    }
   };
 
   onDocumentLoad = ({ numPages }) => {
@@ -225,7 +221,7 @@ logAdd = async (status,hn)=>{
 
       return i === 0 ? '' : item > this.state.numPages ? '' :
         <div className="list-pages" style={{ marginTop: 10, marginLeft: 20, cursor: 'pointer' }} key={i}>
-          <span><Badge count={item} /></span> <Page pageNumber={item} width={200} onClick={() => this.onSelectPdf(item)} />
+          <span><Badge overflowCount ={3000} count={item} /></span> <Page pageNumber={item} width={200} onClick={() => this.onSelectPdf(item)} />
         </div>
     })
 
