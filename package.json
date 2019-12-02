@@ -19,6 +19,7 @@
     "react-pdf": "^4.1.0",
     "react-pdf-watermark": "^1.0.6",
     "react-scrollbars-custom": "^4.0.21",
+    "react-watermark-component": "^2.2.1",
     "reactstrap": "^8.1.1"
   }
 }

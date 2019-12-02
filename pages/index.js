@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Document, Page } from 'react-pdf';
 import jwt_decode from 'jwt-decode';
 import Link from 'next/link'
+import ReactWaterMark from 'react-watermark-component';
 
 
 import Scrollbar from 'react-scrollbars-custom'
@@ -16,6 +17,7 @@ import 'antd/dist/antd.css';
 const BASE_URL = config.BASE_URL;
 const { Header, Content, Footer } = Layout;
 const { Option } = AutoComplete;
+
 
 export default class index extends Component {
   constructor(props) {
@@ -43,6 +45,8 @@ export default class index extends Component {
   }
   
   componentDidMount(){
+// let  ip = Request.UserHostAddress
+this.getIP()
     const token = localStorage.getItem('token')
     if(token === null){
       window.location = '/login';
@@ -57,6 +61,17 @@ export default class index extends Component {
     }
     
   }
+
+ 
+
+  getIP = async ()=>{
+   
+    const res = await axios.get(`http://jsonip.com/?callback=?`)
+    console.log(res)
+    console.log(window.location.hostname)
+   
+  }
+
   getPatient = async () => {
     // console.log(this.state.hn + 'dd')
     console.log(this.state.hn.length)
@@ -233,6 +248,19 @@ logAdd = async (status,hn)=>{
     })
 
 
+    const text = this.state.username + ' ip : ' ;
+        const beginAlarm = function () { console.log('start alarm'); };
+        const options = {
+            chunkWidth: 200,
+            chunkHeight: 60,
+            textAlign: 'left',
+            textBaseline: 'bottom',
+            globalAlpha: 0.17,
+            font: '14px Microsoft Yahei',
+            rotateAngle: -0.26,
+            fillStyle: '#666'
+        }
+
     return (
       <div>
         <nav className="navbar navbar-dark bg-dark">
@@ -337,7 +365,14 @@ logAdd = async (status,hn)=>{
                                 onLoadError ={this.onErrorMain}
 
                             >
+                              <ReactWaterMark
+                                    waterMarkText={text}
+                                    openSecurityDefense
+                                    securityAlarm={beginAlarm}
+                                    options={options}
+                                >
                                 <Page pageNumber={pageNumber} width={this.state.pageWidth} />
+                                </ReactWaterMark>
                             </Document>
                             {/* </ReactWaterMark> */}
                         
