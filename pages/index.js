@@ -285,6 +285,7 @@ logAdd = async (status,hn)=>{
           </form>
         </nav>
 
+{window.location.hostname}
         <div style={{ marginTop: 20, textAlign: 'center' }}>
           <AutoComplete
             dataSource={children}
