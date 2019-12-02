@@ -68,7 +68,7 @@ this.getIP()
    
     const res = await axios.get(`http://jsonip.com/?callback=?`)
     console.log(res)
-    console.log(window.location.hostname)
+   
    
   }
 
@@ -285,7 +285,7 @@ logAdd = async (status,hn)=>{
           </form>
         </nav>
 
-{window.location.hostname}
+
         <div style={{ marginTop: 20, textAlign: 'center' }}>
           <AutoComplete
             dataSource={children}
